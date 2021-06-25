@@ -1,0 +1,149 @@
+@use './layout' as layout;
+@use './styleguild' as guild;
+
+@use './debug' as debug;
+section
+{
+
+    display: flex;
+
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    border-radius: 1rem;
+    box-shadow: .1rem .1rem .05rem rgba(0,0,0,.2);
+    overflow: hidden;
+
+    color : guild.getColor('white');
+
+    @include layout.Desktop
+    {
+        width: layout.$grid-desktop-width;
+        height: layout.$grid-desktop-height;
+
+        // @include debug.line(rgb(79, 79, 143));
+
+        
+    }
+
+    @include layout.Mobile
+    {
+        width : layout.$grid-mobile-width;
+        height: layout.$grid-mobile-height;
+
+        flex-direction: column;
+
+        // @include debug.line(rgb(145, 145, 229));
+    }
+}
+
+.card-container
+{
+    $colorlist : (
+        'orange','darkcyan','verydarkcyan'
+    );
+    width: 100%;
+    height: 600px;
+
+    padding : 4rem;
+
+    @for $i from 1 through 3
+    {
+        &:nth-child(#{$i})
+        {
+            background-color: guild.getColor(nth($colorlist, $i));
+        }
+        &:nth-child(#{$i}) .card-footer a
+        {
+            color : guild.getColor(nth($colorlist, $i));
+        }
+    }
+    & > .card-header
+    {
+        // @include debug.line(rgb(134, 82, 73));
+        @include layout.Desktop
+        {
+            width : guild.$icon-size;
+            height: guild.$icon-size - 2rem;
+        }
+        @include layout.Mobile
+        {
+            width : guild.$icon-size / 3;
+            height: (guild.$icon-size - 2rem) / 3;
+        }
+        & > img
+        {
+            width: inherit;
+            height: inherit;
+        }
+    }
+
+    & > .card-main
+    {
+        width: 100%;
+        height: 80%;
+        
+        // @include debug.line(orange);
+        & > .card-title
+        {
+            color : guild.getColor('lightgray');
+            @include layout.Desktop
+            {
+                font-size: guild.$header-size * 2.5;
+                
+            }
+            @include layout.Mobile
+            {
+                font-size: guild.$header-size;
+            }
+        }
+
+        & > .card-description
+        {
+            padding : 40px 0;
+            line-height: 1.7;
+            @include layout.Desktop
+            {
+                font-size: guild.$description-size * 2.0;
+                
+            }
+            @include layout.Mobile
+            {
+                font-size: guild.$description-size;
+            }
+        }
+    }
+    & > .card-footer {margin-top : -5px;}
+    & > .card-footer a
+    {
+        
+        text-decoration: none;
+
+        background-color: guild.getColor('lightgray');
+
+        border-radius: 50px;
+
+
+        @include layout.Desktop
+        {
+            padding : 10px 30px;
+            
+            font-size: guild.$description-size * 1.9;
+            
+        }
+        @include layout.Mobile
+        {
+            padding : 8px 15px;
+            font-size: guild.$description-size * 1.2;
+        }
+
+
+        &:hover
+        {
+            color : guild.getColor('lightgray');
+            background-color: transparent;
+            border : 4px solid guild.getColor('lightgray');
+        }
+    }
+}

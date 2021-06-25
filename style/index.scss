@@ -1,0 +1,41 @@
+@use './components/section';
+@use './components/layout' as layout;
+*
+{
+    margin : 0;
+    padding : 0;
+    box-sizing: border-box;
+}
+
+html
+{
+    font-size: 62.5%;
+    @include layout.Desktop
+    {
+
+    }
+    @include layout.Mobile
+    {
+        font-size: 90.5%;
+    }
+}
+
+body
+{
+    width: 100vw;
+    height: 100vh;
+    @include layout.Mobile
+    {
+        height: 2000px;
+    }
+    
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }

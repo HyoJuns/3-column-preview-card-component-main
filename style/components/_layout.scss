@@ -1,0 +1,29 @@
+
+$grid-desktop-width : 1320px;
+$grid-mobile-width : 300px;
+$grid-desktop-height : 600px;
+$grid-mobile-height : 1800px;
+
+$breakpoints : (
+    'mobile-start' : 320px,
+    'mobile-end' : 425px,
+    'desktop-start' : 426px
+);
+
+
+@mixin Mobile
+{
+    $start : map-get($breakpoints, 'mobile-start');
+    $end : map-get($breakpoints, 'mobile-end');
+    @media (min-width : $start) and (max-width : $end) {
+        @content;
+    }
+}
+
+@mixin Desktop
+{
+    $start : map-get($breakpoints, 'desktop-start');
+    @media (min-width : $start){
+        @content;
+    }
+}

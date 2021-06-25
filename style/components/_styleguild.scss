@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700&family=Lexend+Deca&display=swap');
+
+
+// font-family: 'Big Shoulders Display', cursive;
+// font-family: 'Lexend Deca', sans-serif;
+
+$family-header : 'Big Shoulders Display', cursive;
+$weight-header : 700;
+$family-body : 'Lexend Deca', sans-serif;
+$weight-body : 400;
+
+@mixin Setfont($family, $weight)
+{
+    font-family: $family;
+    font-weight: $weight;
+}
+
+$colors : (
+    'orange' : hsl(31, 77%, 52%),
+    'darkcyan' : hsl(184, 100%, 22%),
+    'verydarkcyan' : hsl(179, 100%, 13%),
+    'white' : hsla(0, 0%, 100%, 0.75),
+    'lightgray' : hsl(0, 0%, 95%)
+);
+
+@function getColor($colorName)
+{
+    @return map-get($colors, $colorName);
+}
+
+$icon-size : 10rem;
+$header-size : 3rem;
+$description-size : 1.2rem;
